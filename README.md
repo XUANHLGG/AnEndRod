@@ -6,7 +6,7 @@
 
 # 特别鸣谢
  - 想法来源: **CrystalNeko**
- - 功能提供者: **N501YHappy**
+ - 功能与编码支持: **N501YHappy**
 
 请支持他的模组！https://github.com/CSneko/toNeko
 
