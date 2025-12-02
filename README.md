@@ -1,24 +1,25 @@
 # 关于“插件式”末地烛 ✨
 
-&gt; 想找本喵？QQ：2603843916 —— 加之前记得备♂注「末地烛」喵！
+&gt; 想找本喵？QQ：2603843916 —— 记得备注"github"或"插件式末地烛 开源"喵
+&gt; (README才不是被强迫改的呢)
 
 ---
 
 ## 🌟 特别鸣谢
-- 灵感缪斯：[@CrystalNeko](https://github.com/CSneko)（rua~
-- 功能 & 代 码：[@N501YHappy](https://github.com/N501YHappy)（才、才不是因为他威胁才写上去的喵！）
+- 灵感缪斯：[@CrystalNeko](https://github.com/CSneko)(rua~)
+- 功能 & 代 码：[@N501YHappy](https://github.com/N501YHappy)(才...才不是因为他威胁才写上去的喵！)
 
-&gt; 快去支持他的 [toNeko](https://github.com/CSneko/toNeko) 模组啦，不然本喵就……就原地打滚给你看！＞﹏＜
+&gt; 记得支持他的 [toNeko](https://github.com/CSneko/toNeko) 模组!
 
 ---
 
-## 🕯️ 末地烛无序配方（哼，爱记不记）
+## 🕯️ 末地烛无序配方 (哼，爱记不记)
 
 | 名称 | 材料 | 备注 |
 |---|---|---|
-| 普通末地烛 | 末地烛×1 | 白给配方，真没难度喵~ |
-| 粘液末地烛 | 末地烛×1 + 粘液球×1 | 滑滑腻腻，捏起来超——舒——服 |
-| Pro末地烛 | 末地烛×9 | 九九归一，本喵限定高端货！ |
+| 普通末地烛 | 末地烛×1 |
+| 粘液末地烛 | 末地烛×1 + 粘液球×1 | 
+| Pro末地烛 | 末地烛×9 |
 
 ---
 
@@ -28,6 +29,6 @@
 &gt; 正常情况下会自动下载喵，失败的话……
 
 **备用路径**：`plugins/AnEndRod/AnEndRod_Pack.zip`  
-（再打不开？哼，自己去找作者：[@WHITECN2009](https://github.com/WHITECN2009) —— 反正他一直在咕咕咕 ╭(╯^╰)╮）
+再打不开？哼，自己去找作者：[@WHITECN2009](https://github.com/WHITECN2009) —— 反正他一直在咕咕咕 ╭(╯^╰)╮
 
 ---
