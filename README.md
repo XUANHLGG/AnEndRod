@@ -32,8 +32,8 @@
 作者会告诉材质包的新url！ 在`config.yml`里面设置之后再重载哦！
 ---
 # 命令
-|名称 | 材料 |
-|---|---|
+| 用法 | 作用 |
+|----|----|
 | /rodmerge relaod | 重载配置文件 |
 
 **备用路径**：`plugins/AnEndRod/AnEndRod_Pack.zip`  
