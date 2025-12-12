@@ -1,10 +1,9 @@
 package org.WHITECN.listeners;
 
-import java.security.Key;
 import java.util.Map;
 import java.util.UUID;
 
-import org.WHITECN.utils.Status;
+import org.WHITECN.utils.DeathStatus;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,12 +15,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class DeathListener implements Listener {
 
-    public static Map<UUID, Status> mStatus;   // 我不知道怎么描述了喵喵喵
+    public static Map<UUID, DeathStatus> mStatus;   // 我不知道怎么描述了喵喵喵
     private Plugin plugin;
     public DeathListener(Plugin plugin){
         this.plugin = plugin;
@@ -33,7 +31,7 @@ public class DeathListener implements Listener {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     UUID uuid = p.getUniqueId();
                     if (mStatus.containsKey(uuid)) {
-                        Status status = mStatus.get(uuid);
+                        DeathStatus status = mStatus.get(uuid);
                         status.setTime(status.getTime()-1);
                         if (status.getTime() <=0) {
                             mStatus.remove(uuid);
@@ -48,21 +46,21 @@ public class DeathListener implements Listener {
         Player player = event.getEntity();
         UUID pUuid = player.getUniqueId();
         if (mStatus.containsKey(pUuid)) {
-            Status status = mStatus.remove(pUuid);
+            DeathStatus status = mStatus.remove(pUuid);
             event.setDeathMessage(null);
 
             Bukkit.getServer().spigot().broadcast(getDeathMessage(status));
         }
     }
 
-    private BaseComponent[] getDeathMessage(Status status) {
-        UUID nekoUuid   = status.getNeko();
-        UUID playerUuid = status.getPlayer();
+    private BaseComponent[] getDeathMessage(DeathStatus status) {
+        UUID targetUUID = status.getTarget();
+        UUID playerUUID = status.getPlayer();
         ItemStack item  = status.getItemStack();
 
-        String nekoName   =ChatColor.YELLOW+ Bukkit.getOfflinePlayer(nekoUuid).getName();
-        String playerName =ChatColor.YELLOW+ Bukkit.getOfflinePlayer(playerUuid).getName();
-        boolean suicide   = nekoUuid.equals(playerUuid);
+        String targetName =ChatColor.YELLOW+ Bukkit.getOfflinePlayer(targetUUID).getName();
+        String playerName =ChatColor.YELLOW+ Bukkit.getOfflinePlayer(playerUUID).getName();
+        boolean suicide   = targetUUID.equals(playerUUID);
         
         String itemName;
         if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
@@ -75,7 +73,7 @@ public class DeathListener implements Listener {
         if (suicide) {
             msg.setText(playerName + "§7 用 " + itemName + "§7 把自己§d插死了喵♥！");
         } else {
-            msg.setText(nekoName + "§7 被 " + playerName + "§7 用 " + itemName + " §d插死了喵♥！");
+            msg.setText(targetName + "§7 被 " + playerName + "§7 用 " + itemName + " §d插死了喵♥！");
         }
 
         return new BaseComponent[]{ msg };

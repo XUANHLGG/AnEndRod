@@ -1,5 +1,5 @@
 name: AnEndRod
-version: '1.7'
+version: '1.8b'
 main: org.WHITECN.anendrod
 api-version: '1.20'
 prefix: EndRod

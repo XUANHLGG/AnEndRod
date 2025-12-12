@@ -1,14 +1,10 @@
 package org.WHITECN.rods;
 
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.WHITECN.anendrod;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.WHITECN.utils.Status;
+import org.WHITECN.utils.DeathStatus;
 import org.WHITECN.utils.rodsHandler;
 import org.WHITECN.utils.useCounter;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -39,7 +35,7 @@ public class RegularRod implements Listener {
                     mainHand.setItemMeta(useCounter.addTime(meta));
                     meta.setLore(List.of("§7没什么特别的 就是末地烛哦\n","§7已使用 §e" + meta.getPersistentDataContainer().get(new NamespacedKey(anendrod.getInstance(),"useCount"), PersistentDataType.INTEGER) + "§7 次"));
                     mainHand.setItemMeta(meta);
-                    Status.add(player.getUniqueId(), player.getUniqueId(), 10*20, mainHand);
+                    DeathStatus.add(player.getUniqueId(), player.getUniqueId(), 10*20, mainHand);
                     rodsHandler.handleRegularRod(player,player);
                 }
             }
@@ -64,7 +60,7 @@ public class RegularRod implements Listener {
                 mainHand.setItemMeta(useCounter.addTime(meta));
                 meta.setLore(List.of("§7没什么特别的 就是末地烛哦\n","§7已使用 §e" + meta.getPersistentDataContainer().get(new NamespacedKey(anendrod.getInstance(),"useCount"), PersistentDataType.INTEGER) + "§7 次"));
                 mainHand.setItemMeta(meta);
-                Status.add(player.getUniqueId(), target.getUniqueId(), 10*20, mainHand);
+                DeathStatus.add(player.getUniqueId(), target.getUniqueId(), 10*20, mainHand);
                 rodsHandler.handleRegularRod(event.getPlayer(),target);
             }
         }

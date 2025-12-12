@@ -6,21 +6,21 @@ import java.util.UUID;
 import org.WHITECN.listeners.DeathListener;
 import org.bukkit.inventory.ItemStack;
 
-public class Status {
+public class DeathStatus {
 
     private UUID player;
-    private UUID neko;
+    private UUID target;
     private double time;
     private ItemStack itemStack;
 
     /* ---------- 构造 ---------- */
-    public Status() { }
-    public Status(UUID player, UUID neko, double time) {
-        this(player, neko, time, null);
+    public DeathStatus() { }
+    public DeathStatus(UUID player, UUID target, double time) {
+        this(player, target, time, null);
     }
-    public Status(UUID player, UUID neko, double time, ItemStack itemStack) {
+    public DeathStatus(UUID player, UUID target, double time, ItemStack itemStack) {
         this.player = player;
-        this.neko = neko;
+        this.target = target;
         this.time = time;
         this.itemStack = itemStack;
     }
@@ -34,12 +34,12 @@ public class Status {
         this.player = player;
     }
 
-    public UUID getNeko() {
-        return neko;
+    public UUID getTarget() {
+        return target;
     }
 
-    public void setNeko(UUID neko) {
-        this.neko = neko;
+    public void setTarget(UUID target) {
+        this.target = target;
     }
 
     public double getTime() {
@@ -62,7 +62,7 @@ public class Status {
     public String toString() {
         return "Status{" +
                "player=" + player +
-               ", neko=" + neko +
+               ", target=" + target +
                ", time=" + time +
                ", itemStack=" + itemStack +
                '}';
@@ -71,26 +71,26 @@ public class Status {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Status)) return false;
-        Status status = (Status) o;
+        if (!(o instanceof DeathStatus)) return false;
+        DeathStatus status = (DeathStatus) o;
         return Double.compare(status.time, time) == 0 &&
                Objects.equals(player, status.player) &&
-               Objects.equals(neko, status.neko) &&
+               Objects.equals(target, status.target) &&
                Objects.equals(itemStack, status.itemStack);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(player, neko, time, itemStack);
+        return Objects.hash(player, target, time, itemStack);
     }
-    public static void add(UUID player, UUID neko, double time, ItemStack itemStack) {
+    public static void add(UUID player, UUID target, double time, ItemStack itemStack) {
         DeathListener.mStatus.compute(player, (k, old) -> {
             if (old == null) {
-                return new Status(player, neko, time, itemStack);
+                return new DeathStatus(player, target, time, itemStack);
             }
             // 已存在就原地刷新喵
             old.setPlayer(player);
-            old.setNeko(neko);
+            old.setTarget(target);
             old.setTime(time);
             old.setItemStack(itemStack);
             return old;

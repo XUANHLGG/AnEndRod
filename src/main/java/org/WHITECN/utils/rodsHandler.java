@@ -152,8 +152,8 @@ public class rodsHandler {
                 } else {
                     if(t == 1210){
                         if (player.getLocation().getBlock().getType() == Material.AIR || player.getLocation().getBlock().getType()  == Material.CAVE_AIR || player.getLocation().getBlock().getType()  == Material.VOID_AIR) {
-                            if (Objects.requireNonNull(player.getLocation().getWorld()).getEnvironment() != Environment.NETHER) { //检测是不是在地狱
-                                player.sendMessage(ChatColor.GRAY +"哗啦");
+                            player.sendMessage(ChatColor.GRAY +"哗啦");
+                            if (ConfigManager.PRO_SPAWN_WATER && Objects.requireNonNull(player.getLocation().getWorld()).getEnvironment() != Environment.NETHER) {
                                 player.getWorld().getBlockAt(player.getLocation()).setType(Material.WATER);
                             }
                         }
