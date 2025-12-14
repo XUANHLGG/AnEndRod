@@ -45,7 +45,7 @@ public class rodsHandler {
         target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§d呜嗯...进去了~"));
         tagUtils.ensureTag(target,"rodUsed","0");
         tagUtils.setTag(target,"rodUsed",String.valueOf(Integer.parseInt(tagUtils.getTag(target,"rodUsed"))+1));
-        AdvancementHandler.advancementTest(player);
+        AdvancementHandler.advancementTest(target);
     }
     public static void handleSlimeRod(Player player,Player target){
         target.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS,40,0));
@@ -64,7 +64,7 @@ public class rodsHandler {
         target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§d呜嗯...进去了~"));
         tagUtils.ensureTag(target,"rodUsed","0");
         tagUtils.setTag(target,"rodUsed",String.valueOf(Integer.parseInt(tagUtils.getTag(target,"rodUsed"))+1));
-        AdvancementHandler.advancementTest(player);
+        AdvancementHandler.advancementTest(target);
     }
 
 

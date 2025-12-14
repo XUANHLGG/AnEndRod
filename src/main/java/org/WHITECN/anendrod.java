@@ -39,6 +39,7 @@ public final class anendrod extends JavaPlugin {
 
         saveResource("AnEndRod_Pack.zip", true);
         ConfigManager.loadConfig(this); //加载配置文件
+        tagUtils.init(this);
 
         //此处注册配方变量
         NamespacedKey regular = new NamespacedKey(anendrod.getInstance(),"regular_rod");
