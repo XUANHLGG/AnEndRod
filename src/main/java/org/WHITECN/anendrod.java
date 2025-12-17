@@ -9,16 +9,19 @@ import org.WHITECN.utils.ConfigManager;
 import org.WHITECN.utils.rodItemGenerator;
 import org.WHITECN.utils.tagUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -41,6 +44,11 @@ public final class anendrod extends JavaPlugin {
         ConfigManager.loadConfig(this); //加载配置文件
         tagUtils.init(this);
 
+        // 移除已存在的配方（防止重复注册）
+        removeRecipeIfExists("regular_rod");
+        removeRecipeIfExists("slime");
+        removeRecipeIfExists("pro");
+
         //此处注册配方变量
         NamespacedKey regular = new NamespacedKey(anendrod.getInstance(),"regular_rod");
         ShapelessRecipe regularRod = new ShapelessRecipe(regular, rodItemGenerator.createRegularRod());
@@ -53,9 +61,10 @@ public final class anendrod extends JavaPlugin {
         regularRod.addIngredient(1, Material.END_ROD);
         slimeRod.addIngredient(1,Material.END_ROD);
         slimeRod.addIngredient(1,Material.SLIME_BALL);
-
         proRod.addIngredient(9,Material.END_ROD);
+
         //此处注册配方
+
         getServer().addRecipe(regularRod);
         getServer().addRecipe(slimeRod);
         getServer().addRecipe(proRod);
@@ -91,5 +100,25 @@ public final class anendrod extends JavaPlugin {
 
     public static anendrod getInstance() {
         return instance;
+    }
+
+    /**
+     * 移除已存在的配方
+     * @param recipeKey 配方键名
+     */
+    private void removeRecipeIfExists(String recipeKey) {
+        NamespacedKey key = new NamespacedKey(this, recipeKey);
+        Iterator<Recipe> iterator = getServer().recipeIterator();
+
+        while (iterator.hasNext()) {
+            Recipe recipe = iterator.next();
+            if (recipe instanceof Keyed) {
+                if (((Keyed) recipe).getKey().equals(key)) {
+                    iterator.remove();
+                    Bukkit.getConsoleSender().sendMessage("§a[AnEndRod] §f已移除旧配方: " + recipeKey);
+                    return;
+                }
+            }
+        }
     }
 }
