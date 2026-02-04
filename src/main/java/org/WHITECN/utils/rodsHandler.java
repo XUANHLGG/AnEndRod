@@ -57,6 +57,8 @@ public class rodsHandler {
         if (ConfigManager.SUMMON_SLIME) {
             for (int i = 0; i < Math.abs(random.nextInt(2)); i++) {
                 Slime entity = (Slime) target.getWorld().spawnEntity(target.getLocation(), EntityType.SLIME);
+                entity.setCustomNameVisible(true);
+                entity.setCustomName(ChatColor.LIGHT_PURPLE + target.getName() + "的末地烛的" + ChatColor.GREEN + "附着物");
                 entity.setSize(1);
             }
         }

@@ -5,8 +5,8 @@ import org.bukkit.plugin.Plugin;
 
 public class ConfigManager {
     public static String PACK_URL;
-    public static Boolean ENABLE_PACK;
     public static Boolean SUMMON_SLIME;
+    public static Boolean ENABLE_PACK;
     public static Boolean PRO_SPAWN_WATER;
     public static void loadConfig(Plugin plugin){
         plugin.saveDefaultConfig();
